@@ -85,7 +85,7 @@ public:
 
 	/// Sets the name of this thread. This method is implemented for debugging purposes only, and does not do anything
 	/// if running outside Visual Studio debugger.
-	void SetName(const char *name);
+	void SetName(const char *name = nullptr);
 
 	template<typename Class, typename MemberFuncPtr, typename FuncParam>
 	void Run(Class *obj, MemberFuncPtr memberFuncPtr, const FuncParam &param);

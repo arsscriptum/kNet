@@ -30,7 +30,7 @@
 #ifdef EMSCRIPTEN
 #include <emscripten.h>
 #endif
-
+#include "nowarns.h"
 #include "kNet/Clock.h"
 #include "kNet/NetworkLogging.h"
 
@@ -205,7 +205,6 @@ tick_t Clock::Tick()
 	return (tick_t)(((double)emscripten_get_now()) * 1e3);
 //	return (tick_t)clock();
 #elif defined(WIN32)
-	LARGE_INTEGER ddwTimer;
 	QueryPerformanceCounter(&ddwTimer);
 	return ddwTimer.QuadPart;
 #elif defined(_POSIX_MONOTONIC_CLOCK)
@@ -224,7 +223,6 @@ tick_t Clock::Tick()
 unsigned long Clock::TickU32()
 {
 #ifdef WIN32
-	LARGE_INTEGER ddwTimer;
 	QueryPerformanceCounter(&ddwTimer);
 	return ddwTimer.LowPart;
 #else

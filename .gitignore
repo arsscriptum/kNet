@@ -2,6 +2,12 @@
 *.suo
 *.user
 
+.vs
+.vs/**
+
+**/.vs
+**/.vs/**
+
 *.pch
 
 *.pdb

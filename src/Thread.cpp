@@ -125,11 +125,12 @@ void SetThreadName(DWORD dwThreadID, const char *threadName)
 
 void Thread::SetName(const char *name)
 {
+	if (!name) { return; }
 // The thread name can only be set when it is ensured that Thread::Id() returns the proper Win32 thread ID
 #ifdef WIN32
-#if !defined(KNET_USE_BOOST) || !defined(KNET_ENABLE_WINXP_SUPPORT)
-	SetThreadName(Id(), name);
-#endif
+	#if !defined(KNET_USE_BOOST) || !defined(KNET_ENABLE_WINXP_SUPPORT)
+		SetThreadName(Id(), name);
+	#endif
 #endif
 }
 
